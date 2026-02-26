@@ -37,14 +37,14 @@ from llama_index.llms.openai_like import OpenAILike
 # --- 1. CONFIGURACIÓN INICIAL ---
 # LlamaParse requiere una API key gratuita porque el procesamiento del PDF (OCR avanzado) se hace en sus servidores.
 
-os.environ["LLAMA_CLOUD_API_KEY"] = "TU_CLAVE_AQUI" # LlamaParse requiere una API key gratuita para el procesamiento en la nube (https://cloud.llamaindex.ai. Regístrate y copia tu clave aquí. El procesamiento del PDF se hace en sus servidores, pero el resto del proyecto corre localmente sin conexión a internet.
+os.environ["LLAMA_CLOUD_API_KEY"] = "TU_CLAVE_AQUI" # LlamaParse requiere una API key gratuita para el procesamiento en la nube (https://cloud.llamaindex.ai). Debe registrarse, generar y copiar tu clave aca. El procesamiento del PDF se hace en sus servidores, pero el resto del proyecto corre localmente sin conexión a internet.
 
 
 # --- 2. CONEXIÓN CON LM STUDIO (Local) ---
 # Le decimos a LlamaIndex que los "Embeddings" (el traductor de texto a vectores) 
 # no están en OpenAI, sino en nuestro puerto local 1234 (LM Studio)
 Settings.embed_model = OpenAIEmbedding(
-    model_name="paraphrase-multilingual-minilm-l12-v2.gguf", # Para las respuestas en espanol (anteriormente utilice All-MiniLM-L6-v2-Embedding-GGUF. Pero no obtuve buenos resultados)
+    model_name="paraphrase-multilingual-minilm-l12-v2.gguf", # Para las respuestas en español (anteriormente utilice All-MiniLM-L6-v2-Embedding-GGUF. Pero no obtuve buenos resultados)
     api_base="http://localhost:1234/v1",
     api_key="not-needed" # LM Studio no pide clave.
 )
@@ -94,6 +94,7 @@ print("¡Proyecto inicializado y documentos vectorizados con éxito!")
 #query_engine = index.as_query_engine(streaming=True)
 #response = query_engine.query("¿Cuáles son los requisitos para mantener la regularidad?")
 #response.print_response_stream()
+
 
 
 
