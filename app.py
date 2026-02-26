@@ -1,12 +1,3 @@
-import streamlit as st
-import chromadb
-from llama_index.core import VectorStoreIndex, Settings
-from llama_index.vector_stores.chroma import ChromaVectorStore
-from llama_index.embeddings.openai import OpenAIEmbedding
-from llama_index.llms.openai_like import OpenAILike
-from llama_index.core.prompts import ChatPromptTemplate
-from llama_index.core.llms import ChatMessage, MessageRole
-
 """
 ------ El Archivo appy.py-------------------------------------------------------------------------------------------
  Este script es el Frontend y Motor de Consultas RAG. La Interfaz es construida con Streamlit. Contiene las reglas de System Prompting y control de alucinaciones para el Asistente del DACEFyN.
@@ -37,6 +28,15 @@ from llama_index.core.llms import ChatMessage, MessageRole
  # ChatMessage, MessageRole: Son las herramientas para definir "quién dice qué" en la plantilla. 
  # MessageRole nos permite separar claramente qué instrucciones son del SISTEMA (las reglas absolutas del SYSTEM PROMPTING programado, como "No inventes nada") y qué es del USUARIO (la pregunta real).
 """
+
+import streamlit as st
+import chromadb
+from llama_index.core import VectorStoreIndex, Settings
+from llama_index.vector_stores.chroma import ChromaVectorStore
+from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.llms.openai_like import OpenAILike
+from llama_index.core.prompts import ChatPromptTemplate
+from llama_index.core.llms import ChatMessage, MessageRole
 
 # --- 1. CONFIGURACIÓN DEL MOTOR RAG ---
 # Igual que en el archivo anterior (crear_base_datos.py), conectamos con LM Studio.
@@ -172,4 +172,5 @@ if prompt := st.chat_input("Escribe tu consulta administrativa aquí..."):
     st.session_state.messages.append({"role": "assistant", "content": response.response})
     
     
+
     #      COMANDO PARA EJECUTAR EN VS CODE     python -m streamlit run app.py
