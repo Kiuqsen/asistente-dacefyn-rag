@@ -1,11 +1,3 @@
-import os
-import chromadb
-from llama_parse import LlamaParse
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, StorageContext, Settings
-from llama_index.vector_stores.chroma import ChromaVectorStore
-from llama_index.embeddings.openai import OpenAIEmbedding
-from llama_index.llms.openai_like import OpenAILike
-
 """
 ------ El Archivo crear_base_datos.py (El Constructor)-------------------------------------------------------------------------------------------
  Este script es el Backend. Se ejecuta una sola vez (o cuando se actualizan los reglamentos o otros archivos) para leer los PDFs y convertirlos a vectores y construir la base de datos ChromaDB.
@@ -32,6 +24,14 @@ from llama_index.llms.openai_like import OpenAILike
  OpenAILike: Es la clase encargada de gestionar el modelo de lenguaje (el que redacta la respuesta final).
  chromadb: La Base de Datos Vectorial. Aquí es donde los textos se transforman en números (vectores). Elegi ChromaDB porque es de código abierto, corre localmente (sin costos de nube) y es rapidísima para buscar similitudes.
 """
+
+import os
+import chromadb
+from llama_parse import LlamaParse
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, StorageContext, Settings
+from llama_index.vector_stores.chroma import ChromaVectorStore
+from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.llms.openai_like import OpenAILike
 
 
 # --- 1. CONFIGURACIÓN INICIAL ---
@@ -94,6 +94,7 @@ print("¡Proyecto inicializado y documentos vectorizados con éxito!")
 #query_engine = index.as_query_engine(streaming=True)
 #response = query_engine.query("¿Cuáles son los requisitos para mantener la regularidad?")
 #response.print_response_stream()
+
 
 
 
